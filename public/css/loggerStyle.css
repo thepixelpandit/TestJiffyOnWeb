@@ -1,0 +1,105 @@
+* {
+    /* Sets or rather resets any predefined values a browser might apply. */
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+    /* color: whitesmoke; */
+  }
+  
+html {
+    background-color: #E4E9FD;
+    background-image: -webkit-linear-gradient(65deg, #A683E3 50%, #E4E9FD 50%);
+    min-height: 1000px;
+    font-family: 'helvetica neue';
+}
+body {
+    background-color:rgba(95, 87, 87, 00);
+  }
+  
+/* form, input, button, a {
+    all: unset;
+  } */
+
+h1{
+    text-align: center;
+    font-weight: 800;
+    padding-bottom: 3%;
+}
+#startingTime, #endTime, #subjectName, #loginButtons{
+    display: block;
+    padding-left: 1%;
+    margin: 0 auto;
+    margin-bottom: 2%;
+    width: 80%;
+}
+
+.container{
+    width: 40%;
+    margin: 20vh auto;
+    padding: 2% 0 2% 0;
+    border: 1px solid #000000;
+    background-color:rgba(95, 87, 87, .19);
+
+  }
+
+
+.label{
+    text-align: center;
+    text-decoration: underline;
+    color: rgb(55, 55, 87);
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 500;
+    
+}
+
+#successfulMsg{
+    text-align: center;
+    margin-top: 5%;
+    text-decoration: underline;
+    color: rgb(255, 224, 220);
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.form-cntrl{
+    padding: 1%;
+    /* margin: 1% 5%; */
+}
+
+
+.submit{
+    display: block;
+    margin: 0 auto;
+    width: 80%;
+    margin-top: 10%;
+    margin-bottom: 7%;
+    background-color: #9578c5;
+    color: white;
+    border: none;
+    font-size:1.25rem;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.15), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.submit:hover, .submit:focus, .submit:active{
+    background-color: #8c70bd;
+    color: rgb(255, 255, 255);
+    border: none;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.15), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+#loginButtons p{
+    text-align: center;
+    color: rgb(55, 55, 87);
+}
+#loginButtons p a{
+    color: rgb(207, 226, 236);
+    text-decoration: none;
+}
+#loginButtons p a:hover{
+    color: rgb(214, 235, 255);
+    text-decoration: underline;
+}

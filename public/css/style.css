@@ -1,0 +1,120 @@
+* {
+  /* Sets or rather resets any predefined values a browser might apply. */
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  /* font-family: sans-serif; */
+}
+
+*{
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 30px;
+  /* color: whitesmoke; */
+}
+
+body {
+  background: linear-gradient(to bottom right, #534379, #561139);
+}
+
+input, button, a {
+  all: unset;
+}
+
+h1 {
+  font-family: 'Times New Roman', Times, serif;
+  color:aliceblue;
+  text-align: center;
+  margin-bottom: 10%;
+}
+
+
+.login-container {
+    width: 40%;
+    margin: 25vh auto;
+    padding: 2% 0 2% 0;
+    border: 1px solid #ccc;
+  }
+  
+
+.loginElemets{
+  margin: 1% 5%;
+  /* padding: 3% 3%; */
+  /* padding: 3% 0%; */
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, 1fr);
+
+}
+
+.loginElemets input{
+  padding-left: 1%;
+  margin-bottom: 3%;
+
+}
+
+.loginElemets p{
+  margin: 0;
+  padding: 0;
+  color: aliceblue;
+  font-size: 0.75rem;
+}
+.loginElemets p a{
+  color: rgb(206, 208, 214);
+}
+.loginElemets p a:hover{
+  color: white;
+  text-decoration: underline;
+}
+input {
+  width: 100%;
+  /* padding-left: 1%; */
+  background-color: #ddcce7;
+  display: block;
+  
+}
+  
+
+/* Disable bootstrap functions here.  */
+
+.btn{
+  padding: 0;
+  margin: 3% 0 3% 0;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.15), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+
+.btn-primary{
+  background-color: #6c6076;
+  border-color: #3d3248;
+  width: 100%;
+}
+
+.btn-primary:hover{
+  background-color: #5e4e6d;
+  border-color: #3c3048;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.15), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.btn-primary.focus, .btn-primary:focus {
+
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.15), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show > .btn-primary.dropdown-toggle {
+	/* color: #df1111; */
+	background-color: #5e4e6d;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.15), 0 6px 20px 0 rgba(0,0,0,0.19);
+
+
+	/* border-color: #fff; */
+	/* box-shadow: 0 0 0 .2rem rgba(194, 213, 234, 0.5); */
+
+}
+
+.btn-primary:not(:disabled):not(.disabled).active:focus, .btn-primary:not(:disabled):not(.disabled):active:focus, .show > .btn-primary.dropdown-toggle:focus {
+	/* box-shadow: 0 0 0 .2rem rgba(194, 213, 234, 0.5); */
+  border: none;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.15), 0 6px 20px 0 rgba(0,0,0,0.19);
+
+}

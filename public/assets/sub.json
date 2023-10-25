@@ -1,0 +1,25 @@
+{
+    "subjects": {
+        "English": "Grammar, English Grammar, Vocabulary, English Vocabulary, Reading Comprehension, Critical Reasoning, Essay Writing",
+        "Mathematics": "Mathematics, Mathematics Competition, Mathematics Catch Up, Speed Mathematics, Statistics",
+        "Social Sciences": "History, Civics, Geography, Polity, Political Science, Sociology",
+        "Business Sciences": "Economics, Financial Accounting, Labour Law",
+        "Science": "Physics, Chemistry, Biology",
+        "Foreign Language Learning": "German, Spanish, Sanskrit, Dutch",
+        "Computer": "Python, Photoshop, Typing Practice, Computer Science, Web Development",
+        "Entertainment": "Music Listening, Music Sorting, Music, Movie",
+        "Research": "Research",
+        "Financial Upkeep": "Credit Card, PayTM, AmazonPayCC, SBI CC",
+        "General Well Being": "Exercise, Running, Walking"
+    },
+    "projects": {
+        "B School Prep": "Grammar, English Grammar, Vocabulary, English Vocabulary, Reading Comprehension, Critical Reasoning, Essay Writing, Mathematics, Mathematics Competition, Mathematics Catch Up, Speed Mathematics, German, Spanish, Sanskrit, Dutch",
+        "UPSC And StatePSC": "History, Civics, Geography, Polity, Political Science, Sociology, Physics, Chemistry, Biology, Statistics",
+        "Master of Business Administration": "Economics, Financial Accounting, Labour Law",
+        "Fastlane Prep": "Python, Photoshop, Typing Practice, Computer Science, Web Development",
+        "Entertainment": "Music Listening, Music Sorting, Music, Movie",
+        "Research": "Research",
+        "Financial Upkeep": "Credit Card, PayTM, AmazonPayCC, SBI CC",
+        "General Well Being": "Exercise, Running, Walking"
+    }
+}

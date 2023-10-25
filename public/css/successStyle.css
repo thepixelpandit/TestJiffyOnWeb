@@ -1,0 +1,207 @@
+* {
+    /* Sets or rather resets any predefined values a browser might apply. */
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+    /* color: whitesmoke; */
+  }
+  
+html {
+    background-color: #E4E9FD;
+    background-image: -webkit-linear-gradient(65deg, #A683E3 50%, #E4E9FD 50%);
+    min-height: 100vh;
+    font-family: 'helvetica neue';
+}
+body {
+    background-color:rgba(95, 87, 87, 00);
+  }
+  
+/* form, input, button, a {
+    all: unset;
+  } */
+
+  @keyframes textGradientAnimation {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 100% 50%;
+    }
+  }
+  
+
+  .animated-text {
+
+    background: linear-gradient(45deg, #f06, #3c9);
+    background-size: 200% 100%;
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text; /* Chrome and Safari */
+    animation: textGradientAnimation 3s linear infinite;
+    -webkit-animation: textGradientAnimation 3s linear infinite; /* Chrome and Safari */
+    text-align: center;
+    text-decoration: underline;
+    display: block;
+    font-size: 3rem;
+    font-weight: 800;
+  }
+  
+
+  
+h1{
+    text-align: center;
+    padding-bottom: 3%;
+}
+#startingTime, #endTime, #subjectName, #loginButtons{
+    display: block;
+    padding-left: 1%;
+    margin: 0 auto;
+    margin-bottom: 2%;
+    width: 80%;
+    /* background-color: rgba(0, 0, 0, 0.1); */
+}
+
+.container{
+    width: 40%;
+    margin: 20vh auto;
+    padding: 2% 0 2% 0;
+    border: 1px solid #000000;
+    background-color:rgba(95, 87, 87, .10);
+
+  }
+
+.upperContainer{
+    position:relative;
+    width: 40%;
+    margin: -60vh auto;
+    padding: 2% 0 2% 0;
+    /* border: 1px solid #000000; */
+    background-color:rgba(95, 87, 87, .00);
+
+}
+
+.blur-div {
+    filter: blur(13px); /* Adjust the blur radius as needed */
+}
+  
+
+.label{
+    text-align: center;
+    text-decoration: underline;
+    color: rgb(55, 55, 87);
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 500;
+    
+}
+
+#successfulMsg{
+    text-align: center;
+    /* margin-top: 5%; */
+    padding: 0;
+    margin: 0;
+    text-decoration: underline;
+    color: rgb(15, 180, 0);
+    display: block;
+    font-size: 3rem;
+    font-weight: 800;
+}
+
+.form-cntrl{
+    padding: 1%;
+    /* margin: 1% 5%; */
+}
+
+
+.submit{
+    display: block;
+    margin: 0 auto;
+    width: 80%;
+    margin-top: 10%;
+    /* margin-bottom: 7%; */
+    background-color: #9578c5;
+    color: white;
+    border: none;
+    font-size:1.25rem;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.15), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.submit:hover, .submit:focus, .submit:active{
+    background-color: #8c70bd;
+    color: rgb(255, 255, 255);
+    border: none;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.15), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+#loginButtons p{
+    text-align: center;
+    font-weight: 600;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 3%;
+    font-size: 1.2rem;
+    color: rgb(48, 48, 63);
+    text-shadow: 1px 1px 2px rgb(145, 125, 182);
+
+}
+#loginButtons p a{
+    color: rgb(56, 64, 68);
+    text-decoration: none;
+    text-shadow: none;
+}
+#loginButtons p a:hover{
+    color: rgb(214, 235, 255);
+    text-decoration: underline;
+}
+
+@media screen and (min-width: 301px) and (max-width: 600px) {
+  .animated-text{
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 601px) and (max-width: 900px) {
+  .animated-text{
+    font-size: 2rem;
+  }
+}
+
+@media screen and (min-width: 901px) and (max-width: 1200px) {
+  .upperContainer{
+    position:relative;
+    width: 40%;
+    margin: -65vh auto;
+    padding: 2% 0 2% 0;
+    /* border: 1px solid #000000; */
+    background-color:rgba(95, 87, 87, .00);
+
+}
+}
+@media screen and (min-width: 1201px) and (max-width: 1800px) {
+
+  .upperContainer{
+    position:relative;
+    width: 40%;
+    margin: -70vh auto;
+    padding: 2% 0 2% 0;
+    /* border: 1px solid #000000; */
+    background-color:rgba(95, 87, 87, .00);
+
+}
+}
+
+@media screen and (min-width: 1801px) and (max-width: 2400px) {
+
+  .upperContainer{
+    position:relative;
+    width: 40%;
+    margin: -80vh auto;
+    padding: 2% 0 2% 0;
+    /* border: 1px solid #000000; */
+    background-color:rgba(95, 87, 87, .00);
+
+}
+}
+
