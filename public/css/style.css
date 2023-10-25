@@ -79,6 +79,7 @@ input {
 
 .btn{
   padding: 0;
+  padding: 0 0 0 1%;
   margin: 3% 0 3% 0;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.15), 0 6px 20px 0 rgba(0,0,0,0.19);
 }

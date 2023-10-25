@@ -40,8 +40,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '/public')));
 
 
-
-
 // THE GETTING OF WEB PAGES 
 
 // Function to serve HTML files from the "public" folder
@@ -201,6 +199,7 @@ auth.onAuthStateChanged((user) => {
   } else {
     // User is signed out
     console.log('User is signed out');
+    app.get('/')
   }
 });
 
