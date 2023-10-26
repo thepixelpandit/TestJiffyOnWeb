@@ -37,15 +37,28 @@ h1{
     width: 80%;
 }
 
-.container{
+/* .container{
     width: 40%;
     margin: 20vh auto;
     padding: 2% 0 2% 0;
     border: 1px solid #000000;
     background-color:rgba(95, 87, 87, .19);
 
-  }
+  } */
 
+.container{
+    
+    width: 50%;
+    margin: 0 auto;
+    padding: 2% 0 2% 0;
+    border: 1px solid #000000;
+    background-color:rgba(95, 87, 87, .10);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
 
 .label{
     text-align: center;
@@ -112,3 +125,38 @@ h1{
     color: rgb(224, 240, 255);
     text-decoration: underline;
 }
+
+/* The Media Queries Here */
+
+
+@media screen and (min-width: 301px) and (max-width: 600px) {
+    .container{
+      width: 80%;
+    }
+  }
+  
+  @media screen and (min-width: 601px) and (max-width: 900px) {
+    .container{
+      width: 75%;
+    }
+  }
+  
+  @media screen and (min-width: 901px) and (max-width: 1200px) {
+    .container{
+      width: 70%;
+    }
+  }
+  @media screen and (min-width: 1201px) and (max-width: 1800px) {
+    .container{
+      width: 60%;
+    }
+  
+  }
+  
+  @media screen and (min-width: 1801px) and (max-width: 2400px) {
+  
+    .container{
+      width: 55%;
+    }
+  
+  }

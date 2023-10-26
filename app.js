@@ -57,19 +57,14 @@ app.get('/', (req, res) => {
   serveHTMLFile(req, res, 'index.html');
 });
 
-app.get('/register', (req, res) => {
+app.get('/register(.html)?', (req, res) => {
 
   serveHTMLFile(req, res, 'signUpFirebase.html');
 });
 
-app.get('/forgotpassword', (req, res) => {
+app.get('/forgotpassword(.html)?', (req, res) => {
 
   serveHTMLFile(req, res, 'forgotPassword.html');
-});
-
-app.get('/timelogger', (req, res) => {
-
-  serveHTMLFile(req, res, 'timeLogger.html');
 });
 
 app.get('/success', (req, res) => {
@@ -85,6 +80,11 @@ app.get('/logout', (req, res) => {
     res.send('<script>alert("Sign Out Failed.!"); window.location.href = "/";</script>');
   });
 });
+
+app.use((req, res) => {
+  serveHTMLFile(req, res, 'error404.html');
+});
+
 
 // THE POSTING ON WEB PAGES 
 

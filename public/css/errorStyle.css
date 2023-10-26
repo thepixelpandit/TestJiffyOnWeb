@@ -1,0 +1,78 @@
+
+* {
+    /* Sets or rather resets any predefined values a browser might apply. */
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    /* font-family: sans-serif; */
+  }
+  
+*{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    /* color: whitesmoke; */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #534379, #561139);
+
+}
+
+h1 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color:aliceblue;
+    text-align: center;
+    margin-bottom: 7%;
+  }
+  
+.container {
+
+  background: linear-gradient(to left, #9e007f, #4848b9);
+  color: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.container p{
+    color: red;
+    font-size: 1rem;
+    padding-bottom: 2%;
+}
+
+.loginButtons{
+    margin: 1% 5%;
+    /* padding: 3% 3%; */
+    /* padding: 3% 0%; */
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
+  
+  }
+  
+  
+  .loginButtons p{
+    margin: 0;
+    padding: 0;
+    color: aliceblue;
+    font-size: 1.05rem;
+  }
+  .loginButtons p a{
+    font-size: 1rem;
+    color: rgb(206, 208, 214);
+  }
+  .loginButtons p a:hover{
+    color: white;
+    font-size: 1.05rem;
+    text-decoration: underline;
+  }
