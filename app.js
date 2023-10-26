@@ -70,48 +70,18 @@ app.get("/forgotpassword(.html)?", (req, res) => {
   serveHTMLFile(req, res, "forgotPassword.html");
 });
 
-// app.get('/timelogger.html', (req, res) => {
-//   console.log(userAlive)
-//   if (userAlive){
-//     serveHTMLFile(req, res, 'timelogger.html');
-//   }
-//   else{
-//     res.send('<script>alert("You are not authorized to view this page.!"); window.location.href = "/";</script>');
-//   }
-// });
-
-// app.get('/timelogger(.html)?', (req, res) => {
-//   console.log(userAlive)
-//   if (userAlive){
-//     serveHTMLFile(req, res, 'timelogger.html');
-//   }
-//   else{
-//     res.send('<script>alert("You are not authorized to view this page.!"); window.location.href = "/";</script>');
-//   }
-// });
-
-// Define a middleware to check user authentication
-function checkAuthentication(req, res, next) {
-  if (userAlive === true) {
-    next(); // User is authenticated, continue to the route handler
+app.get("/timelogger(.html)?", (req, res) => {
+  console.log(userAlive);
+  if (userAlive) {
+    serveHTMLFile(req, res, "timelogger.html");
   } else {
     res.send(
-      '<script>alert("You are not authorized to view this page!"); window.location.href = "/";</script>'
+      '<script>alert("You are not authorized to view this page.!"); window.location.href = "/";</script>'
     );
   }
-}
-
-// Protected route for /timelogger
-app.get("/timelogger(.html)?", checkAuthentication, (req, res) => {
-  serveHTMLFile(req, res, "timelogger.html");
 });
 
-// Protected route for /timelogger.html
-// app.get("/timelogger.html", checkAuthentication, (req, res) => {
-//   serveHTMLFile(req, res, "timelogger.html");
-// });
-
-app.get("/success", (req, res) => {
+app.get("/success(.html)?", (req, res) => {
   serveHTMLFile(req, res, "success.html");
 });
 
