@@ -46,7 +46,7 @@ body {
     text-align: center;
     text-decoration: underline;
     display: block;
-    font-size: 3rem;
+    font-size: 2.4rem;
     font-weight: 800;
   }
   
@@ -54,18 +54,15 @@ body {
   
 h1{
     text-align: center;
-    padding-bottom: 3%;
-}
-#startingTime, #endTime, #subjectName, #loginButtons{
-    display: block;
-    padding-left: 1%;
-    margin: 0 auto;
-    margin-bottom: 2%;
-    width: 80%;
-    /* background-color: rgba(0, 0, 0, 0.1); */
+    font-size: 2.5rem;
+    text-decoration: underline;
+    font-weight: 800;
+    padding-bottom: 7%;
 }
 
+
 .container{
+    /* display: none; */
     width: 40%;
     margin: 20vh auto;
     padding: 2% 0 2% 0;
@@ -74,42 +71,12 @@ h1{
 
   }
 
-.upperContainer{
-    position:relative;
-    width: 40%;
-    margin: -60vh auto;
-    padding: 2% 0 2% 0;
-    /* border: 1px solid #000000; */
-    background-color:rgba(95, 87, 87, .00);
 
-}
 
 .blur-div {
     filter: blur(13px); /* Adjust the blur radius as needed */
 }
   
-
-.label{
-    text-align: center;
-    text-decoration: underline;
-    color: rgb(55, 55, 87);
-    display: block;
-    font-size: 1.2rem;
-    font-weight: 500;
-    
-}
-
-#successfulMsg{
-    text-align: center;
-    /* margin-top: 5%; */
-    padding: 0;
-    margin: 0;
-    text-decoration: underline;
-    color: rgb(15, 180, 0);
-    display: block;
-    font-size: 3rem;
-    font-weight: 800;
-}
 
 .form-cntrl{
     padding: 1%;
@@ -123,37 +90,37 @@ h1{
     width: 80%;
     margin-top: 10%;
     /* margin-bottom: 7%; */
-    background-color: #9578c5;
+    background-color: rgba(255, 255, 255, 00);
     color: white;
     border: none;
     font-size:1.25rem;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.15), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 .submit:hover, .submit:focus, .submit:active{
-    background-color: #8c70bd;
-    color: rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 00);
     border: none;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.15), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 #loginButtons p{
-    text-align: center;
-    font-weight: 600;
-    padding: 0;
-    margin: 0;
-    margin-bottom: 3%;
-    font-size: 1.2rem;
-    color: rgb(48, 48, 63);
-    text-shadow: 1px 1px 2px rgb(145, 125, 182);
+  /* text-align: center;
+  color: rgb(55, 55, 87); */
 
+  text-align: center;
+  font-weight: 600;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 3%;
+  font-size: 1.05rem;
+  color: rgb(48, 48, 63);
+  text-shadow: 1px 1px 2px rgb(145, 125, 182);
 }
 #loginButtons p a{
-    color: rgb(56, 64, 68);
-    text-decoration: none;
-    text-shadow: none;
+  color: rgb(191, 225, 243);
+  text-decoration: none;
 }
 #loginButtons p a:hover{
-    color: rgb(214, 235, 255);
-    text-decoration: underline;
+  color: rgb(224, 240, 255);
+  text-decoration: underline;
 }
 
 @media screen and (min-width: 301px) and (max-width: 600px) {
@@ -169,39 +136,15 @@ h1{
 }
 
 @media screen and (min-width: 901px) and (max-width: 1200px) {
-  .upperContainer{
-    position:relative;
-    width: 40%;
-    margin: -65vh auto;
-    padding: 2% 0 2% 0;
-    /* border: 1px solid #000000; */
-    background-color:rgba(95, 87, 87, .00);
 
-}
 }
 @media screen and (min-width: 1201px) and (max-width: 1800px) {
 
-  .upperContainer{
-    position:relative;
-    width: 40%;
-    margin: -70vh auto;
-    padding: 2% 0 2% 0;
-    /* border: 1px solid #000000; */
-    background-color:rgba(95, 87, 87, .00);
 
-}
 }
 
 @media screen and (min-width: 1801px) and (max-width: 2400px) {
 
-  .upperContainer{
-    position:relative;
-    width: 40%;
-    margin: -80vh auto;
-    padding: 2% 0 2% 0;
-    /* border: 1px solid #000000; */
-    background-color:rgba(95, 87, 87, .00);
 
-}
 }
 

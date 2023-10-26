@@ -31,9 +31,15 @@ input, button, a {
 h1 {
   font-family: 'Times New Roman', Times, serif;
   font-size: 2.5rem;
+  font-weight: 600;
   color:aliceblue;
   text-align: center;
   margin-bottom: 10%;
+}
+
+.controlForm{
+  /* color: red; */
+  font-size: 1rem;
 }
 
 #passwordMatchError, #displayNameError{
@@ -96,25 +102,32 @@ input {
 
 /* Disable bootstrap functions here.  */
 
-.btn{
+
+.btn {
   padding: 0;
   padding: 0 0 0 1%;
   margin: 3% 0 3% 0;
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.15), 0 6px 20px 0 rgba(0,0,0,0.19);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.15), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  transition: transform 3s; /* Add a transition on the transform property */
 }
 
+.btn:hover {
+  transform: scaleX(0.6); /* Shrink the button's width on hover */
+}
 
-.btn-primary{
-  background-color: #6c6076;
+.btn-primary {
+  background-color: #54465e;
   border-color: #3d3248;
   width: 100%;
 }
 
-.btn-primary:hover{
+.btn-primary:hover {
   background-color: #5e4e6d;
   border-color: #3c3048;
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.15), 0 6px 20px 0 rgba(0,0,0,0.19);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.15), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
 }
+
 
 .btn-primary.focus, .btn-primary:focus {
 
@@ -141,11 +154,90 @@ input {
 
 /* Write Media Queries here. */
 
-@media (min-resolution: 250dpi) {
+
+@media screen and (min-width: 101px) and (max-width: 600px) {
   /* CSS rules to apply to high-resolution mobile devices */
   .login-container {
 
     width: 60%;
+    min-width: fit-content;
+
+    }
+  h1 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color:aliceblue;
+    text-align: center;
+    margin-bottom: 10%;
+  }
+  .controlForm *{
+    font-size: 0.7rem;
+  }
+}
+
+
+@media screen and (min-width: 601px) and (max-width: 900px) {
+  /* CSS rules to apply to high-resolution mobile devices */
+  .login-container {
+
+    width: 60%;
+    min-width: fit-content;
+
+    }
+  h1 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color:aliceblue;
+    text-align: center;
+    margin-bottom: 10%;
+  }
+  .controlForm *{
+    font-size: 0.75rem;
+  }
+}
+
+@media screen and (min-width: 901px) and (max-width: 1600px) {
+  /* CSS rules to apply to high-resolution mobile devices */
+  .login-container {
+    
+    width: 60%;
+    min-width: fit-content;
+
+    }
+  h1 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color:aliceblue;
+    text-align: center;
+    margin-bottom: 10%;
+  }
+}
+
+@media screen and (min-width: 1601px) and (max-width: 2400px) {
+  /* CSS rules to apply to high-resolution mobile devices */
+  .login-container {
+
+    width: 40%;
+    margin: 0 auto;
+    }
+  h1 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color:aliceblue;
+    text-align: center;
+    margin-bottom: 10%;
+  }
+}
+
+@media screen and (min-width: 2401px) and (max-width: 4800px) {
+  /* CSS rules to apply to high-resolution mobile devices */
+  .login-container {
+
+    width: 40%;
     margin: 0 auto;
     padding: 4% 0 4% 0;
     border: 1px solid #ccc;
@@ -154,4 +246,12 @@ input {
     left: 50%;
     transform: translate(-50%, -50%);
     }
+  h1 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color:aliceblue;
+    text-align: center;
+    margin-bottom: 10%;
+  }
 }

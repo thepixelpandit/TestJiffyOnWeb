@@ -92,14 +92,23 @@ h1{
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.15), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 #loginButtons p{
+    /* text-align: center;
+    color: rgb(55, 55, 87); */
+
     text-align: center;
-    color: rgb(55, 55, 87);
+    font-weight: 600;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 3%;
+    font-size: 1.05rem;
+    color: rgb(48, 48, 63);
+    text-shadow: 1px 1px 2px rgb(145, 125, 182);
 }
 #loginButtons p a{
-    color: rgb(207, 226, 236);
+    color: rgb(191, 225, 243);
     text-decoration: none;
 }
 #loginButtons p a:hover{
-    color: rgb(214, 235, 255);
+    color: rgb(224, 240, 255);
     text-decoration: underline;
 }
