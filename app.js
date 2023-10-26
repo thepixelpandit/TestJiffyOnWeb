@@ -1,15 +1,23 @@
 // Import Statements? - Sorta
 
-const express = require('express');
+const express = require("express");
 const app = express();
-require('dotenv').config();
-const bodyParser = require('body-parser');
-const path = require('path'); // Import the 'path' module to handle file paths.
-const { initializeApp } = require('firebase/app'); // Import the initializeApp function
+require("dotenv").config();
+const bodyParser = require("body-parser");
+const path = require("path"); // Import the 'path' module to handle file paths.
+const { initializeApp } = require("firebase/app"); // Import the initializeApp function
 // Using CommonJS syntax to import necessary functions
-const { getAuth, createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword, sendPasswordResetEmail, updateProfile, signOut } = require('firebase/auth');
-const { getDatabase, ref, set, push } = require('firebase/database');
-const { dataSorter, toTitleCase } = require('./public/importantFunctions.js');
+const {
+  getAuth,
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+  signInWithEmailAndPassword,
+  sendPasswordResetEmail,
+  updateProfile,
+  signOut,
+} = require("firebase/auth");
+const { getDatabase, ref, set, push } = require("firebase/database");
+const { dataSorter, toTitleCase } = require("./public/importantFunctions.js");
 
 // GLOBAL VARIABLES START
 
@@ -23,9 +31,10 @@ const firebaseConfig = {
 };
 
 // Access the allowed emails as an array
-const allowedEmails = process.env.ALLOWED_EMAILS.split(',');
+const allowedEmails = process.env.ALLOWED_EMAILS.split(",");
 let user;
-const port = 5000
+let userAlive;
+const port = 5000;
 
 // GLOBAL VARIABLES END
 
@@ -39,58 +48,88 @@ const db = getDatabase(firebaseApp);
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Define the static file directory (public) before defining routes.
-app.use(express.static(path.join(__dirname, '/public')));
+app.use(express.static(path.join(__dirname, "/public")));
 
-
-// THE GETTING OF WEB PAGES 
+// THE GETTING OF WEB PAGES
 
 // Function to serve HTML files from the "public" folder
 function serveHTMLFile(req, res, fileName) {
-
-  const filePath = path.join(__dirname, 'public', fileName);
+  const filePath = path.join(__dirname, "public", fileName);
   res.sendFile(filePath);
 }
 
-
-app.get('/', (req, res) => {
-
-  serveHTMLFile(req, res, 'index.html');
+app.get("/", (req, res) => {
+  serveHTMLFile(req, res, "index.html");
 });
 
-app.get('/register(.html)?', (req, res) => {
-
-  serveHTMLFile(req, res, 'signUpFirebase.html');
+app.get("/register(.html)?", (req, res) => {
+  serveHTMLFile(req, res, "signUpFirebase.html");
 });
 
-app.get('/forgotpassword(.html)?', (req, res) => {
-
-  serveHTMLFile(req, res, 'forgotPassword.html');
+app.get("/forgotpassword(.html)?", (req, res) => {
+  serveHTMLFile(req, res, "forgotPassword.html");
 });
 
-app.get('/success', (req, res) => {
+// app.get('/timelogger.html', (req, res) => {
+//   console.log(userAlive)
+//   if (userAlive){
+//     serveHTMLFile(req, res, 'timelogger.html');
+//   }
+//   else{
+//     res.send('<script>alert("You are not authorized to view this page.!"); window.location.href = "/";</script>');
+//   }
+// });
 
-  serveHTMLFile(req, res, 'success.html');
+// app.get('/timelogger(.html)?', (req, res) => {
+//   console.log(userAlive)
+//   if (userAlive){
+//     serveHTMLFile(req, res, 'timelogger.html');
+//   }
+//   else{
+//     res.send('<script>alert("You are not authorized to view this page.!"); window.location.href = "/";</script>');
+//   }
+// });
+
+// Define a middleware to check user authentication
+function checkAuthentication(req, res, next) {
+  if (userAlive === true) {
+    next(); // User is authenticated, continue to the route handler
+  } else {
+    res.send(
+      '<script>alert("You are not authorized to view this page!"); window.location.href = "/";</script>'
+    );
+  }
+}
+
+// Protected route for /timelogger
+app.get("/timelogger(.html)?", checkAuthentication, (req, res) => {
+  serveHTMLFile(req, res, "timelogger.html");
 });
 
-app.get('/logout', (req, res) => {
+// Protected route for /timelogger.html
+// app.get("/timelogger.html", checkAuthentication, (req, res) => {
+//   serveHTMLFile(req, res, "timelogger.html");
+// });
 
-  signOut(auth).then(() => {
-    res.redirect("/")
-  }).catch((error) => {
-    res.send('<script>alert("Sign Out Failed.!"); window.location.href = "/";</script>');
-  });
+app.get("/success", (req, res) => {
+  serveHTMLFile(req, res, "success.html");
 });
 
-app.use((req, res) => {
-  serveHTMLFile(req, res, 'error404.html');
+app.get("/logout", (req, res) => {
+  signOut(auth)
+    .then(() => {
+      res.redirect("/");
+    })
+    .catch((error) => {
+      res.send(
+        '<script>alert("Sign Out Failed.!"); window.location.href = "/";</script>'
+      );
+    });
 });
 
+// THE POSTING ON WEB PAGES
 
-// THE POSTING ON WEB PAGES 
-
-
-app.post('/register', (req, res) => {
-
+app.post("/register", (req, res) => {
   // Access the form data
   const email = req.body.email;
   const password = req.body.password;
@@ -107,14 +146,14 @@ app.post('/register', (req, res) => {
         // Set the display name (assuming displayName is in the request body)
         if (displayName) {
           updateProfile(auth.currentUser, {
-            displayName: displayName
+            displayName: displayName,
           })
-          .then(() => {
-            console.log("User's display name set to:", displayName);
-          })
-          .catch((error) => {
-            console.error('Error setting display name:', error);
-          });
+            .then(() => {
+              console.log("User's display name set to:", displayName);
+            })
+            .catch((error) => {
+              console.error("Error setting display name:", error);
+            });
         }
 
         console.log("Creation of the new user is successful.");
@@ -124,11 +163,13 @@ app.post('/register', (req, res) => {
             console.log("Email verification sent.");
           })
           .catch((error) => {
-            console.error('Error sending email verification:', error);
+            console.error("Error sending email verification:", error);
           });
 
         // Send an alert to the client and stay on the current page
-        res.send('<script>alert("Account Creation Successful. Welcome!"); window.location.href = "/";</script>');
+        res.send(
+          '<script>alert("Account Creation Successful. Welcome!"); window.location.href = "/";</script>'
+        );
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -138,25 +179,25 @@ app.post('/register', (req, res) => {
         const alertMessage = `<script>alert("Account Creation Failed. Sorry! The error code was: ${errorCode}"); window.location.href = "/register";</script>`;
         res.send(alertMessage);
       });
-    } else {
-      // Email is not in the allowed list, reject the registration
-      res.send('<script>alert("Sorry, You were denied. Please contact the developer."); window.location.href = "/register";</script>');
-    }
+  } else {
+    // Email is not in the allowed list, reject the registration
+    res.send(
+      '<script>alert("Sorry, You were denied. Please contact the developer."); window.location.href = "/register";</script>'
+    );
+  }
 });
 
-
-app.post('/login', (req, res) => {
-
+app.post("/login", (req, res) => {
   const email = req.body.email;
   if (allowedEmails.includes(email)) {
     const email = req.body.email;
     const password = req.body.password;
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in 
+        // Signed in
         user = userCredential.user;
         console.log("Login of the user is successful.");
-        res.redirect('/timelogger')
+        res.redirect("/timelogger");
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -164,55 +205,61 @@ app.post('/login', (req, res) => {
         console.log(errorMessage);
         console.log(error);
       });
-    } else {
-      // Email is not in the allowed list, reject the registration
-      res.send('<script>alert("Sorry, You were denied. Please contact the developer."); window.location.href = "/";</script>');
-    }
+  } else {
+    // Email is not in the allowed list, reject the registration
+    res.send(
+      '<script>alert("Sorry, You were denied. Please contact the developer."); window.location.href = "/";</script>'
+    );
+  }
 });
 
-app.post('/forgotpassword', (req, res) => {
-  
+app.post("/forgotpassword", (req, res) => {
   const email = req.body.email;
   if (allowedEmails.includes(email)) {
     const email = req.body.email;
     sendPasswordResetEmail(auth, email)
-    .then(() => {
-      console.log(" Reset Email has been sent.")
-      res.send('<script>alert("Reset Email has been sent!"); window.location.href = "/";</script>');
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(" Reset Email could not be sent.")
-      console.log(error)
-      // res.send('<script>alert("Sign Out Failed.!"); window.location.href = "/";</script>');
-      res.send('<script>alert("Reset Email could not be sent!")</script>');
-    });
+      .then(() => {
+        console.log(" Reset Email has been sent.");
+        res.send(
+          '<script>alert("Reset Email has been sent!"); window.location.href = "/";</script>'
+        );
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(" Reset Email could not be sent.");
+        console.log(error);
+        // res.send('<script>alert("Sign Out Failed.!"); window.location.href = "/";</script>');
+        res.send('<script>alert("Reset Email could not be sent!")</script>');
+      });
   } else {
     // Email is not in the allowed list, reject the registration
-    res.send('<script>alert("Sorry, You were denied. Please contact the developer."); window.location.href = "/";</script>');
+    res.send(
+      '<script>alert("Sorry, You were denied. Please contact the developer."); window.location.href = "/";</script>'
+    );
   }
 });
 
-app.post('/logout', (req, res) => {
-
-  signOut(auth).then(() => {
-    res.redirect("/")
-  }).catch((error) => {
-    res.send('<script>alert("Sign Out Failed.!"); window.location.href = "/";</script>');
-  });
+app.post("/logout", (req, res) => {
+  signOut(auth)
+    .then(() => {
+      res.redirect("/");
+    })
+    .catch((error) => {
+      res.send(
+        '<script>alert("Sign Out Failed.!"); window.location.href = "/";</script>'
+      );
+    });
 });
 
-
-
-app.post('/timelogger', (req, res) => {
+app.post("/timelogger", (req, res) => {
   const obj = dataSorter(req.body);
 
   DatabaseWrite(obj)
     .then((stuts) => {
       if (stuts === true) {
         // Redirect to a success page
-        res.redirect('/success');
+        res.redirect("/success");
       } else {
         console.log("Failed to successfully post your data.");
         // Handle the error as needed
@@ -226,27 +273,25 @@ app.post('/timelogger', (req, res) => {
     });
 });
 
-
 auth.onAuthStateChanged((user) => {
   if (user) {
-    console.log('User is signed in');
-
+    console.log("User is signed in");
+    userAlive = true;
   } else {
     // User is signed out
-    console.log('User is signed out');
-    app.get('/')
+    console.log("User is signed out");
+    userAlive = false;
+    app.get("/");
   }
 });
-
-
 
 // DATABASE MANAGEMENT START
 
 function writeUserData(userId, email) {
-  set(ref(db, 'users/' + userId), {
+  set(ref(db, "users/" + userId), {
     email: email,
   });
-  console.log(" Wrote the data.")
+  console.log(" Wrote the data.");
 }
 
 function DatabaseWrite(payload) {
@@ -258,11 +303,11 @@ function DatabaseWrite(payload) {
 
       set(newPostRef, payload)
         .then(() => {
-          console.log('Data updated successfully');
+          console.log("Data updated successfully");
           resolve(true); // Resolve the Promise with true on success
         })
         .catch((error) => {
-          console.error('Data update error:', error);
+          console.error("Data update error:", error);
           reject(false); // Reject the Promise with false on error
         });
     } else {
@@ -272,11 +317,11 @@ function DatabaseWrite(payload) {
   });
 }
 
-
-
 // DATABASE MANAGEMENT END
 
-
+app.use((req, res) => {
+  serveHTMLFile(req, res, "error404.html");
+});
 
 // Listen on port 5000
 app.listen(process.env.port || port, () => {
