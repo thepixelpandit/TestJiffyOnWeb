@@ -14,9 +14,15 @@
   /* color: whitesmoke; */
 }
 
-body {
+html {
   background: linear-gradient(to bottom right, #534379, #561139);
+  min-height: 100vh;
+
 }
+body {
+  background-color:rgba(95, 87, 87, 00);
+}
+
 
 input, button, a {
   all: unset;
@@ -24,17 +30,30 @@ input, button, a {
 
 h1 {
   font-family: 'Times New Roman', Times, serif;
+  font-size: 2.5rem;
   color:aliceblue;
   text-align: center;
   margin-bottom: 10%;
 }
 
+#passwordMatchError, #displayNameError{
+  text-align: center;
+  color: red;
+}
 
 .login-container {
     width: 40%;
-    margin: 25vh auto;
+    /* margin: 25vh auto;
     padding: 2% 0 2% 0;
     border: 1px solid #ccc;
+    width: 60%; */
+    margin: 0 auto;
+    padding: 2% 0 2% 0;
+    border: 1px solid #ccc;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
   
 
@@ -118,4 +137,21 @@ input {
   border: none;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.15), 0 6px 20px 0 rgba(0,0,0,0.19);
 
+}
+
+/* Write Media Queries here. */
+
+@media (min-resolution: 250dpi) {
+  /* CSS rules to apply to high-resolution mobile devices */
+  .login-container {
+
+    width: 60%;
+    margin: 0 auto;
+    padding: 4% 0 4% 0;
+    border: 1px solid #ccc;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    }
 }

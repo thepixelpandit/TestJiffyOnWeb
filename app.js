@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const path = require('path'); // Import the 'path' module to handle file paths.
 const { initializeApp } = require('firebase/app'); // Import the initializeApp function
 // Using CommonJS syntax to import necessary functions
-const { getAuth, createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword, sendPasswordResetEmail, signOut } = require('firebase/auth');
+const { getAuth, createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword, sendPasswordResetEmail, updateProfile, signOut } = require('firebase/auth');
 const { getDatabase, ref, set, push } = require('firebase/database');
 const { dataSorter, toTitleCase } = require('./public/importantFunctions.js');
 
@@ -85,40 +85,101 @@ app.get('/logout', (req, res) => {
 
 // THE POSTING ON WEB PAGES 
 
+// app.post('/register', (req, res) => {
+//   // Access the form data
+//   const email = req.body.email;
+//   const password = req.body.password;
+
+//   createUserWithEmailAndPassword(auth, email, password)
+//   .then((userCredential) => {
+//     // User signed up successfully
+//     const user = userCredential.user;
+
+//     console.log(user)
+//     console.log(" Creation of the new user is successful.")
+
+//     sendEmailVerification(user)
+//     .then(() => {
+//       console.log(" Email verification sent.")
+//     })
+//     .catch((error) => {
+//       console.error('Error sending email verification:', error);
+//     });
+
+//     // Send an alert to the client and stay on the current page
+//     res.send('<script>alert("Account Creation Successful. Welcome!"); window.location.href = "/";</script>');
+//   })
+//   .catch((error) => {
+//     const errorCode = error.code;
+//     const errorMessage = error.message;
+//     console.log(errorMessage)
+//     console.log(errorCode)
+//     const alertMessage = `<script>alert("Account Creation Failed. Sorry! The error code was: ${errorCode}"); window.location.href = "/register";</script>`;
+//     res.send(alertMessage);
+//     // res.redirect('/register');
+//   });
+
+// });
+
+
 app.post('/register', (req, res) => {
+
+  // Access the allowed emails as an array
+  const allowedEmails = process.env.ALLOWED_EMAILS.split(',');
+  console.log(allowedEmails)
   // Access the form data
   const email = req.body.email;
   const password = req.body.password;
+  const displayName = req.body.displayName.trim();
 
-  createUserWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    // User signed up successfully
-    const user = userCredential.user;
-    // console.log(user)
-    console.log(" Creation of the new user is successful.")
+  if (allowedEmails.includes(email)) {
+    // Email is in the allowed list; proceed with registration
+    // Register the user using Firebase client SDK
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // User signed up successfully
+        const user = userCredential.user;
 
-    sendEmailVerification(user)
-    .then(() => {
-      console.log(" Email verification sent.")
-    })
-    .catch((error) => {
-      console.error('Error sending email verification:', error);
-    });
+        // Set the display name (assuming displayName is in the request body)
+        if (displayName) {
+          updateProfile(auth.currentUser, {
+            displayName: displayName
+          })
+          .then(() => {
+            console.log("User's display name set to:", displayName);
+          })
+          .catch((error) => {
+            console.error('Error setting display name:', error);
+          });
+        }
 
-    // Send an alert to the client and stay on the current page
-    res.send('<script>alert("Account Creation Successful. Welcome!"); window.location.href = "/";</script>');
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    console.log(errorMessage)
-    console.log(errorCode)
-    const alertMessage = `<script>alert("Account Creation Failed. Sorry! The error code was: ${errorCode}"); window.location.href = "/register";</script>`;
-    res.send(alertMessage);
-    // res.redirect('/register');
-  });
+        console.log("Creation of the new user is successful.");
 
+        sendEmailVerification(user)
+          .then(() => {
+            console.log("Email verification sent.");
+          })
+          .catch((error) => {
+            console.error('Error sending email verification:', error);
+          });
+
+        // Send an alert to the client and stay on the current page
+        res.send('<script>alert("Account Creation Successful. Welcome!"); window.location.href = "/";</script>');
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorMessage);
+        console.log(errorCode);
+        const alertMessage = `<script>alert("Account Creation Failed. Sorry! The error code was: ${errorCode}"); window.location.href = "/register";</script>`;
+        res.send(alertMessage);
+      });
+    } else {
+      // Email is not in the allowed list, reject the registration
+      res.send('<script>alert("Sorry, You were denied. Please contact the developer."); window.location.href = "/register";</script>');
+    }
 });
+
 
 app.post('/login', (req, res) => {
 
@@ -129,7 +190,7 @@ app.post('/login', (req, res) => {
     .then((userCredential) => {
       // Signed in 
       const user = userCredential.user;
-      // console.log(user)
+      console.log(user)
       console.log("Login of the user is successful.");
       res.redirect('/timelogger')
     })
